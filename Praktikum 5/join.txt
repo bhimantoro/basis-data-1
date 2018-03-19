@@ -1,0 +1,36 @@
+1a
+SELECT m.kd_mk, m.nama_mk 
+FROM ambil_mk a 
+INNER JOIN matakuliah m ON m.kd_mk=a.kd_mk 
+WHERE a.jml_mhs=40
+1b
+SELECT m.kd_mk, m.nama_mk, m.sks 
+FROM ambil_mk a 
+JOIN instruktur i ON a.nip=i.nip 
+JOIN matakuliah m ON m.kd_mk=a.kd_mk 
+WHERE i.jurusan="Sastra Indonesia"
+1c
+SELECT i.nip, i.nama, i.jurusan, i.asal_kota
+FROM ambil_mk a 
+JOIN instruktur i ON a.nip=i.nip 
+JOIN matakuliah m ON m.kd_mk=a.kd_mk 
+WHERE i.jurusan!="Ilmu Komputer"
+1d
+SELECT i.nip, i.nama, i.jurusan, i.asal_kota
+FROM instruktur i
+LEFT OUTER JOIN ambil_mk a
+ON i.nip=a.nip
+WHERE a.nip IS NULL
+2a
+SELECT * FROM customer c 
+LEFT OUTER JOIN orders o ON c.customer_id=o.customer_id 
+UNION 
+SELECT * FROM customer c 
+RIGHT OUTER JOIN orders o ON c.customer_id=o.customer_id
+2b
+SELECT c.customer_id, c.customer_name, c.customer_address
+FROM customer c
+INNER JOIN orders o
+ON c.customer_id=o.customer_id
+WHERE o.amount>35000
+2c
